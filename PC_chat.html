@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация и чат</title>
+    <link rel="stylesheet" href="fghd.css">
+</head>
+<body>
+
+    <!-- ЭКРАН РЕГИСТРАЦИИ -->
+    <div id="registration-screen">
+        <div class="registration-card">
+            <form id="registrationForm" action="#" method="POST">
+                <div class="input-group">
+                    <input type="text" class="input-field" id="username" placeholder="Введите имя пользователя" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input-field" id="fullname" placeholder="Ф.И.О." required>
+                </div>
+                <div class="input-group">
+                    <input type="email" class="input-field" id="email" placeholder="email (не обез.)" required>
+                </div>
+                <div class="input-group">
+                    <input type="tel" class="input-field" id="phone" placeholder="Введите номер телефона" required>
+                </div>
+                <div class="terms-container">
+                    <input type="checkbox" id="agreement" required>
+                    <label for="agreement" class="terms-text">
+                        вы соглашаетесь с политикой конфиденциальности
+                    </label>
+                </div>
+                <div id="errorMessage" class="error-message">Пожалуйста, заполните все поля и примите условия.</div>
+                <button type="submit" class="submit-btn">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ЭКРАН ЧАТОВ (изначально скрыт) -->
+    <div id="chat-screen">
+        <!-- ЛЕВАЯ ПАНЕЛЬ -->
+        <aside>
+            <div class="sidebar-header">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <input type="text" class="search-box" placeholder="Поиск чатов">
+            </div>
+            <div class="chat-list">
+                <div class="chat-item">
+                    <div class="avatar avatar-red">Т</div>
+                    <div class="chat-info">
+                        <div class="chat-top-row">
+                            <span class="chat-title">танки 2024</span>
+                            <span class="chat-time">сб</span>
+                        </div>
+                        <div class="chat-preview">
+                            <span class="chat-sub">сегодня в танки</span>
+                            <span class="chat-unread-badge active">34</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar avatar-pink">В</div>
+                    <div class="chat-info">
+                        <div class="chat-top-row">
+                            <span class="chat-title">Вася</span>
+                            <span class="chat-time">13:35</span>
+                        </div>
+                        <div class="chat-preview">
+                            <span class="chat-sub">Го сегодня на ре...</span>
+                            <span class="chat-unread-badge">2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ПРАВАЯ ПАНЕЛЬ -->
+        <main>
+            <header class="chat-header">
+                <div class="avatar avatar-red">Т</div>
+                <div class="chat-header-title">Танки 2024</div>
+                <div class="header-icons">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                </div>
+            </header>
+
+            <div class="message-area">
+                <div class="date-divider">30 апреля</div>
+                <div class="message-row left">
+                    <div class="bubble left">Го дружить <span class="msg-time">17:15</span></div>
+                </div>
+                <div class="message-row right">
+                    <div class="bubble right">Го <span class="msg-time">17:15</span></div>
+                </div>
+                <div class="date-divider">1 мая</div>
+                <div class="message-row left">
+                    <div class="bubble left">Го Warthander скачаем <span class="msg-time">18:21</span></div>
+                </div>
+                <div class="message-row right">
+                    <div class="bubble right">Го <span class="msg-time">18:21</span></div>
+                </div>
+                <div class="date-divider">5 мая</div>
+                <div class="message-row left">
+                    <div class="bubble left">Сегодня в танчики <span class="msg-time">11:47</span></div>
+                </div>
+                <div class="message-row right">
+                    <div class="bubble right">Го <span class="msg-time">11:47</span></div>
+                </div>
+                <div class="date-divider">10 мая</div>
+                <div class="message-row right">
+                    <div class="bubble right">Сегодня в танки <span class="msg-time">15:39</span></div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-box">
+                    <svg class="icon-btn" viewBox="0 0 24 24">
+                        <path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5a2.5 2.5 0 0 1 5 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 0 0 5 0V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/>
+                    </svg>
+                    <input type="text" placeholder="Сообщение">
+                    <div class="input-tools">
+                        <svg class="icon-btn" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+                            <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
+                        </svg>
+                        <svg class="icon-btn" viewBox="0 0 24 24">
+                            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                        </svg>
+                        <svg class="icon-btn" viewBox="0 0 24 24">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registrationScreen = document.getElementById('registration-screen');
+            const chatScreen = document.getElementById('chat-screen');
+            const registrationForm = document.getElementById('registrationForm');
+            const errorMessage = document.getElementById('errorMessage');
+
+            registrationForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Отменяем стандартную отправку формы
+
+                // Получаем значения полей
+                const username = document.getElementById('username').value.trim();
+                const fullname = document.getElementById('fullname').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const agreement = document.getElementById('agreement').checked;
+
+                // Простая валидация
+                if (!username || !fullname || !email || !phone || !agreement) {
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+
+                // Скрываем сообщение об ошибке, если оно было видно
+                errorMessage.style.display = 'none';
+
+                // Плавный переход: скрываем регистрацию и показываем чат
+                registrationScreen.classList.add('hidden');
+                chatScreen.classList.add('visible');
+
+                // Дополнительно можно сохранить данные в localStorage или вывести в консоль
+                console.log('Регистрация успешна:', {
+                    username,
+                    fullname,
+                    email,
+                    phone
+                });
+            });
+
+            // Скрываем сообщение об ошибке при вводе данных
+            const inputs = document.querySelectorAll('.input-field');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    errorMessage.style.display = 'none';
+                });
+            });
+
+            document.getElementById('agreement').addEventListener('change', function() {
+                errorMessage.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
