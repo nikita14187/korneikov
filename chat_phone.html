@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Приложение</title>
+    <link rel="stylesheet" href="chat_phone.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- ===== ЭКРАН 1: РЕГИСТРАЦИЯ ===== -->
+        <div id="registration-screen" class="screen">
+            <div class="registration-card">
+                <form id="registerForm">
+                    <div class="input-group">
+                        <input type="text" class="input-field" placeholder="Введите имя пользователя">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="input-field" placeholder="Ф.И.О.">
+                    </div>
+                    <div class="input-group">
+                        <input type="email" class="input-field" placeholder="email (не обез.)">
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" class="input-field" placeholder="Введите номер телефона">
+                    </div>
+                    <div class="terms-container">
+                        <input type="checkbox" id="agreement">
+                        <label for="agreement" class="terms-text">
+                            вы соглашаетесь с политикой<br>конфиденциальности
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ===== ЭКРАН 2: ВЫБОР ЧАТА ===== -->
+        <div id="chat-screen" class="screen">
+            
+            <!-- Список чатов -->
+            <div class="chat-list-container" id="chat-list-container">
+                <div class="search-container">
+                    <div class="search-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" placeholder="Поиск чатов">
+                    </div>
+                </div>
+
+                <div class="chat-list">
+                    <div class="chat-item" id="tanki-chat">
+                        <div class="avatar avatar-red">Т</div>
+                        <div class="chat-info">
+                            <div class="chat-row-top">
+                                <span class="chat-name">танки 2024</span>
+                                <span class="chat-meta">сб</span>
+                            </div>
+                            <div class="chat-row-bottom">
+                                <span class="chat-preview">сегодня в танки</span>
+                                <span class="badge">34</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-item" id="vasya-chat">
+                        <div class="avatar avatar-pink">В</div>
+                        <div class="chat-info">
+                            <div class="chat-row-top">
+                                <span class="chat-name">Вася</span>
+                                <span class="chat-meta">13:35</span>
+                            </div>
+                            <div class="chat-row-bottom">
+                                <span class="chat-preview">Го сегодня на ре...</span>
+                                <span class="badge">2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fab">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                    </svg>
+                </div>
+
+                <div class="bottom-nav">
+                    <div class="nav-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <div class="nav-item active">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                        </svg>
+                    </div>
+                    <div class="nav-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== ЭКРАН 3: САМ ЧАТ ===== -->
+            <div class="chat-window" id="chat-window">
+                <div class="chat-header">
+                    <div class="header-back" id="back-to-list">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </div>
+                    <div class="header-avatar">T</div>
+                    <div class="header-title">Танки 2024</div>
+                    <div class="header-menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#777">
+                            <circle cx="12" cy="5" r="2"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <circle cx="12" cy="19" r="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="message-area">
+                    <div class="date-divider">30 апреля</div>
+                    <div class="message-row incoming">
+                        <div class="bubble incoming">
+                            Го дружить <span class="msg-time">17:15</span>
+                        </div>
+                    </div>
+                    <div class="message-row outgoing">
+                        <div class="bubble outgoing">
+                            Го <span class="msg-time">17:15</span>
+                        </div>
+                    </div>
+                    <div class="date-divider">1 мая</div>
+                    <div class="message-row incoming">
+                        <div class="bubble incoming">
+                            Го Warthander скачаем <span class="msg-time">18:21</span>
+                        </div>
+                    </div>
+                    <div class="message-row outgoing">
+                        <div class="bubble outgoing">
+                            Го <span class="msg-time">18:21</span>
+                        </div>
+                    </div>
+                    <div class="date-divider">5 мая</div>
+                    <div class="message-row incoming">
+                        <div class="bubble incoming">
+                            Сегодня в танчики <span class="msg-time">11:47</span>
+                        </div>
+                    </div>
+                    <div class="message-row outgoing">
+                        <div class="bubble outgoing">
+                            Го <span class="msg-time">11:47</span>
+                        </div>
+                    </div>
+                    <div class="date-divider">10 мая</div>
+                    <div class="message-row outgoing">
+                        <div class="bubble outgoing">
+                            Сегодня в танки <span class="msg-time">15:39</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <div class="input-box">
+                        <svg class="icon-btn" viewBox="0 0 24 24">
+                            <path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5a2.5 2.5 0 0 1 5 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 0 0 5 0V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/>
+                        </svg>
+                        <input type="text" placeholder="Сообщение">
+                        <div class="input-icons">
+                            <svg class="icon-btn" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke="#888" stroke-width="2" fill="none"/>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round"/>
+                                <circle cx="9" cy="9" r="1.5" fill="#888"/>
+                                <circle cx="15" cy="9" r="1.5" fill="#888"/>
+                            </svg>
+                            <svg class="icon-btn" viewBox="0 0 24 24">
+                                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                            </svg>
+                            <svg class="icon-btn send-icon" viewBox="0 0 24 24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // 1. Переход с регистрации на список чатов
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const registrationScreen = document.getElementById('registration-screen');
+            const chatScreen = document.getElementById('chat-screen');
+
+            registrationScreen.classList.add('hidden');
+            setTimeout(() => {
+                chatScreen.classList.add('visible');
+            }, 150);
+        });
+
+        // 2. Переход в чат "Танки 2024" (плавно)
+        document.getElementById('tanki-chat').addEventListener('click', function() {
+            const listContainer = document.getElementById('chat-list-container');
+            const chatWindow = document.getElementById('chat-window');
+
+            // Сначала исчезает список
+            listContainer.classList.remove('active');
+            listContainer.classList.add('hidden-chat');
+            
+            // Через 200 мс появляется чат
+            setTimeout(() => {
+                chatWindow.classList.remove('hidden-chat');
+                chatWindow.classList.add('active');
+            }, 200);
+        });
+
+        // 3. Возврат к списку чатов (плавно)
+        document.getElementById('back-to-list').addEventListener('click', function() {
+            const listContainer = document.getElementById('chat-list-container');
+            const chatWindow = document.getElementById('chat-window');
+
+            // Сначала исчезает чат
+            chatWindow.classList.remove('active');
+            chatWindow.classList.add('hidden-chat');
+
+            // Через 200 мс появляется список
+            setTimeout(() => {
+                listContainer.classList.remove('hidden-chat');
+                listContainer.classList.add('active');
+            }, 200);
+        });
+
+        // 4. Заглушка для чата "Вася"
+        document.getElementById('vasya-chat').addEventListener('click', function() {
+            alert('Чат с Васей в разработке :)');
+        });
+    </script>
+
+</body>
+</html>
