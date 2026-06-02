@@ -14,17 +14,6 @@ body {
     align-items: center;
 }
 
-.app-container {
-    width: 100%;
-    max-width: 380px;
-    height: 100vh;
-    max-height: 780px;
-    border-radius: 30px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
 /* ===== ЭКРАНЫ ===== */
 .screen {
     position: absolute;
