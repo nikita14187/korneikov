@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Messenger App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="phone-container">
+
+    <!-- ЭКРАН 1: РЕГИСТРАЦИЯ -->
+    <div id="screen1" class="screen active">
+        <div class="logo-area">
+            <i class="fas fa-crown"></i>
+            <h2>Регистрация</h2>
+        </div>
+        <input type="text" id="reg-username" placeholder="Введите имя пользователя">
+        <input type="text" id="reg-fullname" placeholder="Ф.И.О">
+        <input type="email" id="reg-email" placeholder="email (не обяз.)">
+        <input type="tel" id="reg-phone" placeholder="Введите номер телефона">
+        <div class="terms">
+            <input type="checkbox" id="reg-terms">
+            <span>Вы соглашаетесь с политикой конфиденциальности</span>
+        </div>
+        <button class="primary-btn" onclick="registerUser()">Зарегистрироваться</button>
+    </div>
+
+    <!-- ЭКРАН 2: ЧАТЫ -->
+    <div id="screen2" class="screen">
+        <div class="nav-bar"><div></div><div></div></div>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Поиск чатов">
+        </div>
+
+        <div id="chat-list">
+            <!-- Список чатов будет заполнен динамически -->
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-item active"><i class="fas fa-user-friends"></i></div>
+            <div class="nav-item" onclick="showScreen('screen6')"><i class="fas fa-user"></i></div>
+            <div class="nav-item"><i class="fas fa-phone"></i></div>
+            <div class="nav-item" onclick="showScreen('screen5')"><i class="fas fa-cog"></i></div>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 3: ЧАТ -->
+    <div id="screen3" class="screen">
+        <div class="nav-bar" style="padding: 0 0 10px 0;">
+            <i class="fas fa-arrow-left icon-btn" onclick="showScreen('screen2')"></i>
+            <div onclick="showScreen('screen4')" style="display: flex; align-items: center; flex-grow: 1; margin-left: 10px; cursor: pointer;">
+                <div class="avatar-circle" style="width: 32px; height: 32px; font-size: 12px;" id="chat-avatar">Т</div>
+                <span class="nav-title" style="font-size: 16px; margin-left: 8px;" id="chat-title">Танки 2024</span>
+            </div>
+            <i class="fas fa-ellipsis-v icon-btn"></i>
+        </div>
+
+        <div id="message-container">
+            <!-- Сообщения -->
+        </div>
+
+        <div class="chat-input-area">
+            <i class="fas fa-paperclip"></i>
+            <input type="text" placeholder="Сообщение" id="message-input">
+            <i class="fas fa-microphone"></i>
+            <i class="fas fa-paper-plane" style="color: #1e88e5;" onclick="sendMessage()"></i>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 4: ИНФО О ЧАТЕ (без изменений) -->
+    <div id="screen4" class="screen">
+        <div class="nav-bar">
+            <i class="fas fa-arrow-left icon-btn" onclick="showScreen('screen3')"></i>
+            <span class="nav-title">Танки 2024</span>
+            <i class="fas fa-cog icon-btn"></i>
+        </div>
+        <div class="chat-header-info">
+            <div class="avatar-circle" style="width: 60px; height: 60px; font-size: 24px; margin: 0 auto;">Т</div>
+            <div style="font-size: 24px; font-weight: bold; color: #4caf50; margin-top: 10px;">Танки 2024</div>
+            <div style="font-size: 14px; color: #666;">2 участника</div>
+        </div>
+        <div class="chat-actions">
+            <div class="action-item"><i class="fas fa-user-plus"></i> Добавить</div>
+            <div class="action-item"><i class="fas fa-phone"></i> Звонок</div>
+            <div class="action-item"><i class="far fa-bell"></i> Уведом.</div>
+            <div class="action-item"><i class="fas fa-search"></i> Поиск</div>
+            <div class="action-item"><i class="fas fa-sign-out-alt"></i> Выйти</div>
+        </div>
+        <div class="link-box"><i class="fas fa-link"></i> Ссылка на чат</div>
+        <div class="section-title">Участники</div>
+        <div class="member-row"><div class="avatar-img" style="background-color:#43a047;display:flex;justify-content:center;align-items:center;color:#fff;font-size:12px;">N</div><span>Никита Корнейков</span></div>
+        <div class="member-row"><div class="avatar-img" style="background-color:#1e88e5;display:flex;justify-content:center;align-items:center;color:#fff;font-size:12px;">A</div><span>Артём Артемов</span></div>
+    </div>
+
+    <!-- ЭКРАН 5: ПРОФИЛЬ -->
+    <div id="screen5" class="screen">
+        <div class="nav-bar">
+            <i class="fas fa-arrow-left icon-btn" onclick="showScreen('screen2')"></i>
+        </div>
+        <div class="profile-header">
+            <div class="avatar-circle" style="width:80px;height:80px;margin:0 auto;background:#ddd;border:3px solid #4caf50;font-size:30px;color:#555;">N</div>
+            <div class="profile-name">Никита</div>
+            <div class="profile-phone">+7 960 1488 67 69</div>
+        </div>
+        <div class="menu-list">
+            <div class="menu-item"><i class="far fa-bell"></i> <span>Уведомления</span></div>
+            <div class="menu-item"><i class="fas fa-user-circle"></i> <span>Аккаунт</span></div>
+            <div class="menu-item"><i class="fas fa-paint-brush"></i> <span>Внешний вид</span></div>
+            <div class="menu-item"><i class="fas fa-phone"></i> <span>Звонки</span></div>
+            <div class="menu-item"><i class="fas fa-comment-dots"></i> <span>Чаты</span></div>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 6: КОНТАКТЫ -->
+    <div id="screen6" class="screen">
+        <div class="nav-bar">
+            <i class="fas fa-arrow-left icon-btn" onclick="showScreen('screen2')"></i>
+            <span class="nav-title" style="text-align:center;margin-left:-20px;">Контакты</span>
+            <div style="width:20px;"></div>
+        </div>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Поиск контактов">
+        </div>
+        <div class="contact-item"><div class="avatar-img" style="background-color:#43a047;display:flex;justify-content:center;align-items:center;color:#fff;">N</div><span>Никита Корнейков</span></div>
+        <div class="contact-item"><div class="avatar-circle" style="background-color:#e53935;">С</div><span>Серега гараж</span></div>
+        <div class="contact-item"><div class="avatar-circle" style="background-color:#d32f2f;">А</div><span>Артем Аксенов</span></div>
+    </div>
+
+</div>
+
+<script>
+    // --- Вспомогательная функция переключения экранов ---
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        const target = document.getElementById(screenId);
+        if (target) {
+            target.classList.add('active');
+            if (screenId === 'screen2') loadChats();
+        }
+    }
+
+    // --- Регистрация ---
+    function registerUser() {
+        const username = document.getElementById('reg-username').value.trim();
+        const fullname = document.getElementById('reg-fullname').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const phone = document.getElementById('reg-phone').value.trim();
+        const terms = document.getElementById('reg-terms').checked;
+
+        if (!username || !fullname || !phone) {
+            alert('Заполните все обязательные поля (имя, ФИО, телефон)');
+            return;
+        }
+        if (!terms) {
+            alert('Вы должны согласиться с политикой конфиденциальности');
+            return;
+        }
+
+        fetch('/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, fullname, email, phone})
+        })
+        .then(r => r.json())
+        .then(response => {
+            if (response.status === 'success') {
+                alert('Регистрация прошла успешно!');
+                showScreen('screen2');
+            } else {
+                alert('Ошибка: ' + response.message);
+            }
+        });
+    }
+
+    // --- Загрузка списка чатов ---
+    function loadChats() {
+        fetch('/chats')
+        .then(r => r.json())
+        .then(chats => {
+            const container = document.getElementById('chat-list');
+            container.innerHTML = '';
+            chats.forEach(chat => {
+                const row = document.createElement('div');
+                row.className = 'chat-row';
+                row.onclick = function() { openChat(chat.id, chat.name, chat.avatar); };
+                row.innerHTML = `
+                    <div class="avatar-circle">${chat.avatar}</div>
+                    <div class="chat-info">
+                        <h4>${chat.name}</h4>
+                        <p>${chat.last_message}</p>
+                    </div>
+                    <div class="chat-meta">
+                        <span class="time">${chat.time}</span>
+                        <span class="unread-badge">${chat.unread}</span>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        });
+    }
+
+    // --- Открытие чата ---
+    let currentChatId = null;
+
+    function openChat(chatId, chatName, avatar) {
+        currentChatId = chatId;
+        document.getElementById('chat-title').innerText = chatName;
+        document.getElementById('chat-avatar').innerText = avatar;
+        showScreen('screen3');
+
+        fetch(`/messages/${chatId}`)
+        .then(r => r.json())
+        .then(messages => renderMessages(messages));
+    }
+
+    // --- Отрисовка сообщений ---
+    function renderMessages(messages) {
+        const container = document.getElementById('message-container');
+        container.innerHTML = '';
+        if (!messages || messages.length === 0) {
+            container.innerHTML = '<div style="text-align:center;color:#888;margin-top:20px;">Нет сообщений</div>';
+            return;
+        }
+        let lastDate = '';
+        messages.forEach(msg => {
+            const dateDiv = document.createElement('div');
+            dateDiv.className = 'date-divider';
+            dateDiv.innerText = 'Сегодня';
+            if (lastDate !== 'Сегодня') {
+                container.appendChild(dateDiv);
+                lastDate = 'Сегодня';
+            }
+            const row = document.createElement('div');
+            row.className = 'message-row';
+            const bubble = document.createElement('div');
+            bubble.className = `message-bubble ${msg.type}`;
+            bubble.innerHTML = `${msg.text} <span style="font-size:10px;color:#666;margin-left:5px;">${msg.time}</span>`;
+            row.appendChild(bubble);
+            container.appendChild(row);
+        });
+        container.scrollTop = container.scrollHeight;
+    }
+
+    // --- Отправка сообщения ---
+    function sendMessage() {
+        const input = document.getElementById('message-input');
+        const text = input.value.trim();
+        if (!text || currentChatId === null) {
+            if (!text) alert('Введите сообщение');
+            return;
+        }
+
+        fetch('/send_message', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({chat_id: currentChatId, text: text})
+        })
+        .then(r => r.json())
+        .then(updatedMessages => {
+            renderMessages(updatedMessages);
+            loadChats(); // обновим список чатов
+        });
+
+        input.value = '';
+    }
+
+    // При загрузке показываем экран регистрации (уже активен)
+</script>
+
+</body>
+</html>
