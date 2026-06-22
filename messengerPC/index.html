@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEX — Регистрация</title>
+  <link rel="stylesheet" href="f.css" />
+</head>
+<body>
+
+  <!-- ===== ПОЛНОЭКРАННАЯ РЕГИСТРАЦИЯ ===== -->
+  <div id="register-overlay">
+    <div class="register-card">
+      <img src="https://img.icons8.com/?size=100&id=oQZiODxTvE5b&format=png&color=000000" class="logo" alt="VEX" />
+      <div class="title">Регистрация</div>
+      <form id="registerForm">
+        <input type="text" placeholder="Введите имя пользователя" required />
+        <input type="text" placeholder="Ф.И.О." required />
+        <input type="email" placeholder="email (не обяз.)" />
+        <input type="tel" placeholder="Введите номер телефона" required />
+        <div class="agree">
+          <input type="checkbox" id="agreeCheck" required />
+          <label for="agreeCheck">вы соглашаетесь с <a href="#">политикой конфиденциальности</a></label>
+        </div>
+        <button type="submit" class="btn-register">Зарегистрироваться</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== ОСНОВНОЕ ПРИЛОЖЕНИЕ ===== -->
+  <div class="app" id="app">
+    <!-- Левая панель -->
+    <aside class="sidebar" id="sidebar">
+      <nav class="sidebar-nav">
+        <figure onclick="alert('Меню')">
+          <img src="https://img.icons8.com/?size=100&id=PpSBa7iaIak3&format=png&color=737373" alt="меню" />
+        </figure>
+        <figure onclick="navigateTo('profile')">
+          <img src="https://img.icons8.com/?size=100&id=99268&format=png&color=737373" alt="профиль" />
+          <figcaption>Профиль</figcaption>
+        </figure>
+        <figure onclick="navigateTo('communities')">
+          <img src="https://img.icons8.com/?size=100&id=122809&format=png&color=737373" alt="сообщества" />
+          <figcaption>Сообщества</figcaption>
+        </figure>
+        <figure onclick="navigateTo('register')">
+          <img src="https://img.icons8.com/?size=100&id=oQZiODxTvE5b&format=png&color=737373" alt="регистрация" />
+          <figcaption>Регистрация</figcaption>
+        </figure>
+      </nav>
+      <div class="search-container">
+        <input type="text" placeholder="Поиск чатов" id="searchInput" />
+      </div>
+      <div class="chat-list" id="chatList">
+        <!-- генерируется JS -->
+      </div>
+    </aside>
+
+    <!-- Правая область -->
+    <header class="header" id="header">
+      <button class="back-btn" id="backBtn" onclick="goBack()">←</button>
+      <div class="avatar-small" id="headerAvatar">Т</div>
+      <div class="chat-header" id="headerTitle">Профиль</div>
+    </header>
+
+    <main class="content" id="content">
+      <!-- сюда рендерится активная страница -->
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
